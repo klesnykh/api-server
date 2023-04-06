@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Food = require('../models/food');
+const {Food} = require('../models/food');
 
 router.get('/', readFood);
 router.get('/:id', readOneFood);
