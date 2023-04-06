@@ -50,14 +50,12 @@ async function updateClothes(request, response, next) {
 }
 
 async function deleteClothes(request, response, next) {
-  await Clothes.destroy({
+  let num = await Clothes.destroy({
     where:{
       id: request.params.id,
     },
   });
-
-  let data = await Clothes.findAll();
-  response.status(200).json(data);
+  response.status(200).send(num);
 }
 
 module.exports = router;
