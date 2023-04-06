@@ -55,7 +55,9 @@ async function deleteClothes(request, response, next) {
       id: request.params.id,
     },
   });
-  response.status(200);
+
+  let data = await Clothes.findAll();
+  response.status(200).json(data);
 }
 
 module.exports = router;
