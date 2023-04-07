@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const {Clothes} = require('../models');
 
+//Methods are being declared for certain desired outcomes
 router.get('/', readClothes);
 router.get('/:id', readOneClothes);
 router.post('/', createClothes);
@@ -11,9 +12,9 @@ router.put('/:id', updateClothes);
 router.delete('/:id', deleteClothes);
 
 
-
 //const data = [];
 
+//Functions made for desired CRUD methods based on the request to have a certain response
 async function readClothes(request, response, next){
   try{
     let data = await Clothes.read();
@@ -48,5 +49,5 @@ async function deleteClothes(request, response, next) {
   let num = await Clothes.delete(request.params.id);
   response.status(200).send(`${num}`);
 }
-
+//Exports the router wich are CRUD methods
 module.exports = router;
