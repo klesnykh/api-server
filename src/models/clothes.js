@@ -3,12 +3,9 @@
 require('dotenv').config();
 const {Sequelize, DataTypes} = require('sequelize');
 
-const SQL_URL = process.env.SQL_URL || 'sqlite:memory:';
+// const sequelize = new Sequelize('sqlite:memory:');
 
-const sequelize = new Sequelize('sqlite:memory:');
-
-const Clothes = sequelize.define('Clothes', {
-  //example:
+const Clothes = (sequelize)=>sequelize.define('Clothes', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -19,7 +16,4 @@ const Clothes = sequelize.define('Clothes', {
   },
 });
 
-module.exports = {
-  sequelize,
-  Clothes,
-};
+module.exports = Clothes;
